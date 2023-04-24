@@ -15,9 +15,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.http.get<any>("/api/weather/info")
-      .pipe(tap(appInfo => this.version = appInfo.version))
-      .subscribe();
   }
 
 }
