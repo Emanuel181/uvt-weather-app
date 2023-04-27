@@ -33,38 +33,43 @@ export class AuthComponent {
   onLogIn(): void {
     console.log(this.loginForm.value);
 
-    this.authService.logIn(this.loginForm.value).subscribe(
-      (response: any) => {
-        console.log('Login with success!');
+    this.router.navigate(['/', 'dashboard']);
 
-        console.log(response);
+    // this.authService.logIn(this.loginForm.value).subscribe(
+    //   (response: any) => {
+    //     console.log('Login with success!');
 
-        this.router.navigate(['/', 'dashboard']);
-      },
-      (err) => {
-        console.log('Login with failed!');
-        console.log(err);
-      }
-    );
+    //     console.log(response);
+
+    //     this.router.navigate(['/', 'dashboard']);
+    //   },
+    //   (err) => {
+    //     console.log('Login with failed!');
+    //     console.log(err);
+    //   }
+    // );
   }
 
   onRegister(): void {
     console.log(this.registerForm.value);
 
-    this.authService.logIn(this.registerForm.value).subscribe(
-      (response: any) => {
-        console.log('Register with success!');
+    this.viewType = 'login';
+    this.resetLoginForm();
 
-        this.viewType = 'login';
-        this.resetLoginForm();
+    // this.authService.logIn(this.registerForm.value).subscribe(
+    //   (response: any) => {
+    //     console.log('Register with success!');
 
-        console.log(response);
-      },
-      (err) => {
-        console.log('Register with failed!');
-        console.log(err);
-      }
-    );
+    //     this.viewType = 'login';
+    //     this.resetLoginForm();
+
+    //     console.log(response);
+    //   },
+    //   (err) => {
+    //     console.log('Register with failed!');
+    //     console.log(err);
+    //   }
+    // );
   }
 
   getErrorMessage(formControl: any) {

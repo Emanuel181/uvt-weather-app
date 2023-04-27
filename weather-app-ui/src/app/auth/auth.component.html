@@ -21,7 +21,7 @@
           />
           <mat-error *ngIf="loginForm.controls['email'].invalid">{{
             getErrorMessage(loginForm.controls["email"])
-            }}</mat-error>
+          }}</mat-error>
         </mat-form-field>
       </div>
       <div class="div-input-field">
@@ -37,7 +37,7 @@
           />
           <mat-error *ngIf="loginForm.controls['password'].invalid">{{
             getErrorMessage(loginForm.controls["password"])
-            }}</mat-error>
+          }}</mat-error>
         </mat-form-field>
       </div>
       <div class="div-buttons-container">
@@ -67,9 +67,9 @@
     id="register-card"
   >
     <mat-card-content *ngIf="registerForm" [formGroup]="registerForm">
-      <div class="div-logo-regiser">
+      <div class="div-logo">
         <img
-          class="img-logo-register"
+          class="img-logo"
           src="https://www.endava.com/-/media/EndavaDigital/Endava/Images/MetaDataImages/preview-image.ashx"
         />
       </div>
@@ -86,7 +86,7 @@
           />
           <mat-error *ngIf="registerForm.controls['username'].invalid">{{
             getErrorMessage(registerForm.controls["username"])
-            }}</mat-error>
+          }}</mat-error>
         </mat-form-field>
       </div>
       <div class="div-input-field">
@@ -101,7 +101,7 @@
           />
           <mat-error *ngIf="registerForm.controls['email'].invalid">{{
             getErrorMessage(registerForm.controls["email"])
-            }}</mat-error>
+          }}</mat-error>
         </mat-form-field>
       </div>
       <div class="div-input-field">
@@ -117,7 +117,7 @@
           />
           <mat-error *ngIf="registerForm.controls['password'].invalid">{{
             getErrorMessage(registerForm.controls["password"])
-            }}</mat-error>
+          }}</mat-error>
         </mat-form-field>
       </div>
       <div class="div-input-field">
@@ -133,7 +133,7 @@
           />
           <mat-error *ngIf="registerForm.controls['reTypePassword'].invalid">{{
             getErrorMessage(registerForm.controls["reTypePassword"])
-            }}</mat-error>
+          }}</mat-error>
         </mat-form-field>
       </div>
       <div class="div-buttons-container">
