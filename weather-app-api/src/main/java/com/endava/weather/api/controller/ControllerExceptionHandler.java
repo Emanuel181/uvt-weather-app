@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ControllerExceptionHandler {
     @ExceptionHandler(ApplicationException.class)
     public ApiResponse handleApplicationException(final ApplicationException e) {
+        System.out.println("test");
         System.out.println(e.getMessage());
         return ApiResponse.builder()
                 .status(HttpStatus.OK.value())

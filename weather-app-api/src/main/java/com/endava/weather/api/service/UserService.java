@@ -34,10 +34,11 @@ public class UserService {
     }
 
     public UserResponse loginUser(UserItem userItem) {
-        System.out.println("login user");
         Optional<UserItem> userFoundInDb = userRepository.findOneByEmail(userItem.getEmail());
 
         if (userFoundInDb.isPresent()) {
+            System.out.println(userFoundInDb);
+
             if (userFoundInDb.get().getEmail().equals(userItem.getEmail()) &&
                     userFoundInDb.get().getPassword().equals(userItem.getPassword())) {
 
