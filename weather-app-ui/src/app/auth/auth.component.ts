@@ -35,6 +35,8 @@ export class AuthComponent {
         if (response.message != 'Bad credentials!') {
           console.log('Login with success!');
 
+          this.resetLoginForm();
+
           this.router.navigate(['/', 'dashboard']);
         } else {
           alert(response.message);
@@ -52,23 +54,23 @@ export class AuthComponent {
     if (
       this.registerForm.value.password != this.registerForm.value.reTypePassword
     ) {
-      alert('Password not match!');
-      return;
+      alert('Passwords do not match');
+    } else {
+      this.authService.register(this.registerForm.value).subscribe(
+        (response: any) => {
+          console.log('Register with success!');
+
+          this.viewType = 'login';
+          this.resetRegisterForm();
+
+          console.log(response);
+        },
+        (err) => {
+          console.log('Register with failed!');
+          console.log(err);
+        }
+      );
     }
-    this.authService.register(this.registerForm.value).subscribe(
-      (response: any) => {
-        console.log('Register with success!');
-
-        this.viewType = 'login';
-        this.resetLoginForm();
-
-        console.log(response);
-      },
-      (err) => {
-        console.log('Register with failed!');
-        console.log(err);
-      }
-    );
   }
 
   getErrorMessage(formControl: any) {
