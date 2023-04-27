@@ -1,10 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   public logIn(payload: { email: string; password: string }) {
     let body: any = {
