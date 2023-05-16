@@ -7,6 +7,9 @@ import com.endava.weather.api.service.WeatherService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 
 @RestController
@@ -22,7 +25,12 @@ public class WeatherController {
 
     @GetMapping(path = "/getAllByName/{name}")
     public ApiResponse getAllBy(@PathVariable String name) {
-        return new ApiResponse(HttpStatus.OK.value(), "Un string", weatherService.findAllBy(name));
+        RestTemplate restTemplate = new RestTemplate();
+        Object[] items = restTemplate.getForObject("http://api.weatherapi.com/v1/current.json?key=bc3ecfaa933e4734bf491123232804&q=London&aqi=no", Object[].class);
+
+
+
+        return new ApiResponse(HttpStatus.OK.value(), "Un string", List.of(items));
     }
 
     @GetMapping(path = "/getAllByYear/{year}")

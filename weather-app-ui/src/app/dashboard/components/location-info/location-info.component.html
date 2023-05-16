@@ -1,0 +1,35 @@
+<mat-card class="card-element">
+  <mat-card-content>
+    <div style="display: flex">
+      <div>
+        <p class="lbl-title">
+          {{ title | titlecase }},
+          <span class="lbl-value">{{ region | titlecase }}</span>
+        </p>
+      </div>
+      <div
+        class="div-icon"
+        [ngStyle]="{ 'background-color': isFavorite ? 'red' : 'grey' }"
+        (click)="onFavorite()"
+      >
+        <mat-icon class="icon" [fontIcon]="iconName"></mat-icon>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div class="div-details">
+        <p class="lbl-title">Country</p>
+        <p class="lbl-info">{{ country | titlecase }}</p>
+      </div>
+
+      <div class="div-details">
+        <p class="lbl-title">Timezone</p>
+        <p class="lbl-info">{{ timezone | titlecase }}</p>
+      </div>
+      <div class="div-details">
+        <p class="lbl-title">Local Time</p>
+        <p class="lbl-title">{{ localtime | date : "medium" }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

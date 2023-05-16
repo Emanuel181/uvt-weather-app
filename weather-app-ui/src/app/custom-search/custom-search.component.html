@@ -1,0 +1,23 @@
+<form class="div-form" (submit)="onEmit()">
+  <div style="display: flex">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Enter Location</mat-label>
+      <input
+        type="text"
+        placeholder="Enter location name"
+        matInput
+        [formControl]="inputText"
+      />
+    </mat-form-field>
+    <div style="display: flex">
+      <button
+        style="margin-top: 10px; margin-left: 16px"
+        mat-button
+        color="primary"
+        (click)="onEmit()"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</form>

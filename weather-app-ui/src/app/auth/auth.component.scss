@@ -12,7 +12,11 @@
 }
 
 .div-container {
+  height: 100%;
   display: flex;
+  background-image: url('../../assets/backgorund.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .card-container {

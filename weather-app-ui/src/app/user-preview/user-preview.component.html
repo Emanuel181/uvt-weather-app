@@ -1,0 +1,22 @@
+<mat-card class="card-user" *ngIf="user">
+  <mat-card-header>
+    <mat-card-title-group style="padding-bottom: 16px">
+      <div style="display: flex">
+        <button
+          mat-button
+          style="margin-left: auto; margin-right: 0px"
+          (click)="onLogout()"
+        >
+          Logout
+        </button>
+      </div>
+      <mat-card-title>{{ user.username }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <app-custom-search
+      (searchEvent)="onReceiveData($event)"
+    ></app-custom-search>
+  </mat-card-content>
+</mat-card>

@@ -1,1 +1,101 @@
-<p>dashboard works!</p>
+<div style="display: flex">
+  <div style="width: 100vw">
+    <div class="div-banner">
+      <img class="img-container" src="../../assets/banner.jpeg" />
+    </div>
+
+    <div style="display: flex">
+      <div style="width: 70%">
+        <app-location-info
+          [title]="location.location.name"
+          [region]="location.location.region"
+          [country]="location.location.country"
+          [timezone]="location.location.tz_id"
+          [localtime]="location.location.localtime"
+        >
+        </app-location-info>
+      </div>
+      <div style="width: 30%">
+        <app-user-preview (searchInput)="onSearch($event)"></app-user-preview>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div style="width: 70vw">
+        <div class="flex-container">
+          <app-weather-info
+            [title]="'Temperature'"
+            [value]="location.current.temp_c + ' °C'"
+            [iconName]="'thermostat'"
+            [iconColor]="'#CBB279'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'Feels like'"
+            [value]="location.current.feelslike_c + ' °C'"
+            [iconName]="'thermostat_auto'"
+            [iconColor]="'grey'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'Wind Speed'"
+            [value]="location.current.wind_kph + ' km/h'"
+            [iconName]="'air'"
+            [iconColor]="'#E1D4BB'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'Wind Direction'"
+            [value]="location.current.wind_dir"
+            [iconName]="'explore'"
+            [iconColor]="'grey'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'Humidity'"
+            [value]="location.current.humidity + ' %'"
+            [iconName]="'water_drop'"
+            [iconColor]="'#B04759'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'Atmospheric PS'"
+            [value]="location.current.pressure_mb + ' mmHg'"
+            [iconName]="'compress'"
+            [iconColor]="'grey'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'Cloud'"
+            [value]="location.current.cloud + ' %'"
+            [iconName]="'thunderstorm'"
+            [iconColor]="'#E1D4BB'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'Rain'"
+            [value]="location.current.feelslike_f + '%'"
+            [iconName]="'thunderstorm'"
+            [iconColor]="'#ECA869'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'UV'"
+            [value]="location.current.uv"
+            [iconName]="'wb_sunny'"
+            [iconColor]="'#B8E7E1'"
+          ></app-weather-info>
+          <app-weather-info
+            [title]="'Visibility'"
+            [value]="location.current.vis_km + ' km'"
+            [iconName]="'visibility'"
+            [iconColor]="'#B04759'"
+          ></app-weather-info>
+        </div>
+      </div>
+      <div style="margin-top: 16px; width: 30vw">
+        <app-drawer></app-drawer>
+      </div>
+    </div>
+    <div style="width: 100vw" class="flex-container">
+      <app-town-preview
+        *ngFor="let town of favorites"
+        (click)="onSearch(town.title)"
+        [title]="town.title"
+        [img]="town.img"
+      ></app-town-preview>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<mat-card class="card-element">
+  <mat-card-content>
+    <div style="display: flex">
+      <div>
+        <p class="lbl-title">{{ title }}</p>
+        <p class="lbl-value">{{ value }}</p>
+      </div>
+      <div class="div-icon" [ngStyle]="{ 'background-color': iconColor }">
+        <mat-icon class="icon" [fontIcon]="iconName"></mat-icon>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
