@@ -12,6 +12,8 @@
           [country]="location.location.country"
           [timezone]="location.location.tz_id"
           [localtime]="location.location.localtime"
+          [isFavorite]="isFavorite(location.location.name)"
+          (onFavorite)="onRefresh()"
         >
         </app-location-info>
       </div>
@@ -95,6 +97,8 @@
         (click)="onSearch(town.title)"
         [title]="town.title"
         [img]="town.img"
+        [isFavorite]="town.isFavorite"
+        (onFavorite)="onRefresh()"
       ></app-town-preview>
     </div>
   </div>

@@ -49,31 +49,14 @@ export class DashboardComponent {
     },
   };
 
-  favorites: Array<any> = [
-    {
-      title: 'Arad',
-      img: 'https://i0.wp.com/aradevents.ro/wp-content/uploads/2022/12/arad-mg-9347-1.jpg?fit=1980%2C1320&ssl=1',
-    },
-    {
-      title: 'Brasov',
-      img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.YrzPegtAwQyfTWZcNy8TNgHaE8%26pid%3DApi&f=1&ipt=c5839f49b1bab8642d6e84f216aa87a52be86d40912f0f30ea3d69a44c163d2b&ipo=images',
-    },
-    {
-      title: 'Oradea',
-      img: 'https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTA3dHJhbnNjb2Rlci5yY3Mt/cmRzLnJvJTJGc3RvcmFnZSUyRjIwMjEl/MkYwMyUyRjI4JTJGMTMwNjQ0Nl8xMzA2/NDQ2X29yYWRlYS5qcGcmdz03ODAmaD00/NDAmaGFzaD1hOWEwYmUzOTAwNzQxODEwOWFlODc2YWM2NTU2ZmUwYg==.thumb.jpg',
-    },
-    {
-      title: 'Sibiu',
-      img: 'https://holaromania.com/wp-content/uploads/2020/07/sibiu-romania-atardecer-800x522.jpg',
-    },
-    {
-      title: 'Cluj',
-      img: 'https://holaromania.com/wp-content/uploads/2020/08/tamas-pap-centro-cluj-napoca.jpg',
-    },
-  ];
+  favorites: Array<any> = [];
 
   constructor(private weatherAPIService: WeatherAPIService) {
+    this.favorites = weatherAPIService.favorites;
+
     this.weatherAPIService.loadData('Timisoara').subscribe((response: any) => {
+      console.log(response);
+
       this.location = response;
     });
   }
@@ -84,5 +67,13 @@ export class DashboardComponent {
     this.weatherAPIService.loadData(data).subscribe((response: any) => {
       this.location = response;
     });
+  }
+
+  isFavorite(title: string) {
+    return this.weatherAPIService.isFavorite(title);
+  }
+
+  onRefresh() {
+    this.favorites = this.weatherAPIService.favorites;
   }
 }

@@ -1,4 +1,16 @@
-<mat-card class="card-element">
+<mat-card class="card-element" *ngIf="isFavorite">
   <img class="img-preview" [src]="img" />
-  <p class="lbl-title">{{ title }}</p>
+  <div style="display: flex">
+    <img
+      style="
+        height: 30px;
+        margin-top: 4px;
+        margin-right: 10px;
+        margin-left: 10px;
+      "
+      [src]="isFavorite ? 'assets/favorite_full.png' : 'assets/favorite.png'"
+      (click)="onFavoriteClicked(title)"
+    />
+    <p class="lbl-title">{{ title }}</p>
+  </div>
 </mat-card>

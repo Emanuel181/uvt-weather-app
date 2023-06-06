@@ -7,13 +7,16 @@
           <span class="lbl-value">{{ region | titlecase }}</span>
         </p>
       </div>
-      <div
-        class="div-icon"
-        [ngStyle]="{ 'background-color': isFavorite ? 'red' : 'grey' }"
-        (click)="onFavorite()"
-      >
-        <mat-icon class="icon" [fontIcon]="iconName"></mat-icon>
-      </div>
+      <img
+        style="
+          height: 30px;
+          margin-top: 4px;
+          margin-left: auto;
+          margin-right: 10px;
+        "
+        [src]="isFavorite ? 'assets/favorite_full.png' : 'assets/favorite.png'"
+        (click)="onFavoriteClicked()"
+      />
     </div>
 
     <div style="display: flex">

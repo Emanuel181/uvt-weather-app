@@ -1,11 +1,42 @@
 import { Injectable } from '@angular/core';
-import { WeatherItem } from '../models/stock-item';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherAPIService {
+  public favorites: Array<any> = [
+    {
+      title: 'Arad',
+      img: 'https://i0.wp.com/aradevents.ro/wp-content/uploads/2022/12/arad-mg-9347-1.jpg?fit=1980%2C1320&ssl=1',
+      isFavorite: false,
+    },
+    {
+      title: 'Timisoara',
+      img: 'https://xn--urlaub-in-rumnien-2qb.de/wp-content/uploads/2017/10/Piata-Victoriei-3-1.jpg',
+      isFavorite: false,
+    },
+    {
+      title: 'Brasov',
+      img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.YrzPegtAwQyfTWZcNy8TNgHaE8%26pid%3DApi&f=1&ipt=c5839f49b1bab8642d6e84f216aa87a52be86d40912f0f30ea3d69a44c163d2b&ipo=images',
+      isFavorite: false,
+    },
+    {
+      title: 'Oradea',
+      img: 'https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTA3dHJhbnNjb2Rlci5yY3Mt/cmRzLnJvJTJGc3RvcmFnZSUyRjIwMjEl/MkYwMyUyRjI4JTJGMTMwNjQ0Nl8xMzA2/NDQ2X29yYWRlYS5qcGcmdz03ODAmaD00/NDAmaGFzaD1hOWEwYmUzOTAwNzQxODEwOWFlODc2YWM2NTU2ZmUwYg==.thumb.jpg',
+      isFavorite: false,
+    },
+    {
+      title: 'Sibiu',
+      img: 'https://holaromania.com/wp-content/uploads/2020/07/sibiu-romania-atardecer-800x522.jpg',
+      isFavorite: false,
+    },
+    {
+      title: 'Cluj-Napoca',
+      img: 'https://holaromania.com/wp-content/uploads/2020/08/tamas-pap-centro-cluj-napoca.jpg',
+      isFavorite: false,
+    },
+  ];
   private colors: Array<string> = [
     '#875ef9',
     '#edbae5',
@@ -62,5 +93,27 @@ export class WeatherAPIService {
     return this.httpClient.get(
       `http://api.weatherapi.com/v1/current.json?key=bc3ecfaa933e4734bf491123232804&q=${location}&aqi=no`
     );
+  }
+
+  public onFavorite(title: string) {
+    for (let i = 0; i < this.favorites.length; i++) {
+      if (this.favorites[i].title == title) {
+        this.favorites[i].isFavorite = !this.favorites[i].isFavorite;
+      }
+    }
+
+    console.log(this.favorites);
+  }
+
+  public isFavorite(title: string) {
+    const data = this.favorites.filter(
+      (element: any) => element.title.toLowerCase() == title.toLowerCase()
+    );
+
+    if (data.length > 0) {
+      return data[0].isFavorite;
+    } else {
+      return false;
+    }
   }
 }
